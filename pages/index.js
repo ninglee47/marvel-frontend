@@ -2,38 +2,9 @@ import Head from 'next/head'
 import Image from 'next/image'
 import Link from 'next/link';
 import styles from '../styles/Home.module.css'
-import {  gql } from "@apollo/client";
-import client from "../apollo-client";
 
-const Feed_query = gql`{
-  feed {
-    id
-    title
-  }
-}`
 
-export async function getStaticProps() {
-  const { data } = await client.query({
-    query: gql`
-    query {
-      feed {
-        id
-        title
-        img
-        url
-      }
-    }
-    `,
-  });
-
-  return {
-    props: {
-      comics: data.feed,
-    },
- };
-}
-
-export default function Home({comics}) {
+export default function Home() {
   return (
     <div className={styles.container}>
       <Head>
@@ -43,17 +14,21 @@ export default function Home({comics}) {
       </Head>
       <div>
       
-          {comics.map((link) => (
-            <>
-            <p key={link.id}>{link.title}</p>
-            <Link href={link.url}>
-              <a>
-                <Image src={link.img} width={225} height={139} alt={link.title} />
-             </a>
-             </Link>
-            </>
-            
-          ))}
+          <Link href="/about">
+            <a>About</a>
+          </Link>
+
+          <Link href="/avenger_dissamble">
+            <a>Avenger Dissamble</a>
+          </Link>
+
+          <Link href="/house_of_m">
+            <a>House of M</a>
+          </Link>
+
+          <Link href="/civil_war">
+            <a>Civil War</a>
+          </Link>
         
       </div>
 
