@@ -2,6 +2,12 @@ import Head from 'next/head'
 import Image from 'next/image'
 import Link from 'next/link';
 import styles from '../styles/Home.module.css'
+import { Text, Box, Stack } from '@chakra-ui/react';
+import {
+  Breadcrumb,
+  BreadcrumbItem,
+  BreadcrumbLink,
+} from '@chakra-ui/react'
 
 
 export default function Home() {
@@ -14,25 +20,47 @@ export default function Home() {
       </Head>
       <div>
       
-          <Link href="/about">
-            <a>About</a>
-          </Link>
+         <Breadcrumb separator='-'>
+            <BreadcrumbItem>
+              <BreadcrumbLink href='/'>
+                <Text fontSize='3xl' align={'center'}>Home</Text>
+              </BreadcrumbLink>
+            </BreadcrumbItem>
+          
+            <BreadcrumbItem>
+              <BreadcrumbLink href='/about'>
+                <Text fontSize='3xl' align={'center'}>About</Text>
+              </BreadcrumbLink>
+            </BreadcrumbItem>
+          </Breadcrumb>
 
-          <Link href="/avenger_dissamble">
-            <a>Avenger Dissamble</a>
-          </Link>
 
-          <Link href="/house_of_m">
-            <a>House of M</a>
-          </Link>
+          <Box align='center'>
+            <Text fontSize={'4xl'}>Marvel Earth-616</Text>
+            <Image width={1200*0.8} height={688*0.8} src={'/pics/The_Marvel_Universe.webp'}/>
+          </Box>
 
-          <Link href="/civil_war">
-            <a>Civil War</a>
-          </Link>
+          <Stack>
+          <Box align='center'>
+            <Link href="/avenger_dissamble">
+              <a>Avenger Dissamble</a>
+            </Link>
+          </Box>
+
+          <Box align='center'>
+            <Link href="/house_of_m">
+              <a>House of M</a>
+            </Link>
+          </Box>
+          
+          <Box align='center'>
+            <Link href="/civil_war">
+              <a>Civil War</a>
+            </Link>
+            </Box>
+          </Stack>
         
-      </div>
-
-      
+      </div>      
     </div>
   )
 }
