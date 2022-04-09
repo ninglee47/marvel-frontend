@@ -2,12 +2,15 @@ import Head from 'next/head'
 import Image from 'next/image'
 import Link from 'next/link';
 import styles from '../styles/Home.module.css'
-import { Text, Box, Stack } from '@chakra-ui/react';
-import {
-  Breadcrumb,
-  BreadcrumbItem,
-  BreadcrumbLink,
-} from '@chakra-ui/react'
+import { Text, Box, Stack, extendTheme } from '@chakra-ui/react';
+
+const theme = extendTheme({
+  textStyles: {
+    h1: {
+      textShadow: '-1px 1px 2px #000, 1px 1px 2px #000, 1px -1px 0 #000, -1px -1px 0 #000,'
+    }
+  }
+})
 
 
 export default function Home() {
@@ -20,42 +23,43 @@ export default function Home() {
       </Head>
       <div>
       
-         <Breadcrumb separator='-'>
-            <BreadcrumbItem>
-              <BreadcrumbLink href='/'>
-                <Text fontSize='3xl' align={'center'}>Home</Text>
-              </BreadcrumbLink>
-            </BreadcrumbItem>
-          
-            <BreadcrumbItem>
-              <BreadcrumbLink href='/about'>
-                <Text fontSize='3xl' align={'center'}>About</Text>
-              </BreadcrumbLink>
-            </BreadcrumbItem>
-          </Breadcrumb>
-
-
-          <Box align='center'>
-            <Text fontSize={'4xl'}>Marvel Earth-616</Text>
-            <Image width={1200*0.8} height={688*0.8} src={'/pics/The_Marvel_Universe.webp'}/>
+         
+          <Box mt='85px' mr='85px'>
+            <Link href='/about'>
+              <a>
+              <Image src={'/pics/about@3x.png'} width='209px' height='100px'/>
+              </a>
+            </Link>
           </Box>
+          
 
           <Stack>
-          <Box align='center'>
+          <Box>
+            <Text textShadow={'-12px 0px black'} color='#d25050' fontFamily={'OstrichSans'} fontSize='180px' fontWeight={'900'}>
+              MARVEL EARTH 616
+            </Text>
+          </Box>
+          <Box align='right' pb='40px' pr='90px'>
             <Link href="/avenger_dissamble">
-              <a>Avenger Dissamble</a>
+              <a>
+              <Image src={'/pics/avengers-disassemble@3x.png'} width='823px' height='100px'/>
+              </a>
             </Link>
           </Box>
 
-          <Box align='center'>
+          <Box align='right' pb='40px' pr='90px'>
             <Link href="/house_of_m">
-              <a>House of M</a>
+              <a>
+              <Image src={'/pics/house-of-m@3x.png'} width='338px' height='100px'/>
+            </a>
             </Link>
           </Box>
           
-          <Box align='center'>
+          <Box align='right' pb='40px' pr='90px'>
             <Link href="/civil_war">
-              <a>Civil War</a>
+            <a>
+            <Image src={'/pics/civil-war@3x.png'} width='381px' height='100px'/>
+            </a>
             </Link>
             </Box>
           </Stack>

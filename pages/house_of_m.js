@@ -3,7 +3,7 @@ import Image from 'next/image'
 import Link from 'next/link';
 import { gql } from "@apollo/client";
 import client from "../apollo-client";
-import { Box, Grid, GridItem, Text } from '@chakra-ui/react';
+import { Box, Grid, GridItem, Text, HStack } from '@chakra-ui/react';
 import {
   Breadcrumb,
   BreadcrumbItem,
@@ -39,55 +39,57 @@ export default function House_Of_M({comics}) {
         <title>House of M Reading Order</title>
       </Head>
       <div>
-          <Breadcrumb separator='-'>
-            <BreadcrumbItem>
-              <BreadcrumbLink href='/'>
-                <Text fontSize='3xl' align={'center'}>Home</Text>
-              </BreadcrumbLink>
-            </BreadcrumbItem>
-          
-            <BreadcrumbItem>
-              <BreadcrumbLink href='/about'>
-                <Text fontSize='3xl' align={'center'}>About</Text>
-              </BreadcrumbLink>
-            </BreadcrumbItem>
-          </Breadcrumb>
+        <Box mt='85px' ml='85px'>
+          <Link href='/'>
+            <a>
+            <Image src={'/pics/home@3x.png'} width='209px' height='100px'/>
+            </a>
+          </Link>
+        </Box>
 
-          <Text fontSize='4xl' align={'center'}>House of M</Text>
-          <Box align='center'>
-            <Image src='/pics/House-of-M.jpeg' width={1280*0.8} height={720*0.8} alt={'House of M'} />
-          </Box>
-
-          <Box width={'85%'} paddingBottom='10' paddingTop={'5'} paddingLeft='80'>
-            <Text fontSize={'2xl'}>
-              When the Scarlet Witch alters reality, the Avengers and X-Men face a world like none they’ve ever known! 
-              Writer Brian Michael Bendis and artist Olivier Coipel re-imagine the Marvel Universe with Magneto bringing mutantkind to prominence in an eight-issue event.
-              As the only person who remembers how things used to be, can Wolverine set things right? Should he?"
+        <Box pl='95px'>
+            <Text textShadow={'-12px 0px black'} color='#d25050' fontFamily={'OstrichSans'} fontSize='180px' fontWeight={'900'}>
+              HOUSE OF M
             </Text>
-          </Box>
+        </Box>
+        
+        <Box width='100%' pb='76px'>
+          <Image src={'/pics/137439@3x.png'} layout="responsive" width='1139px' height='438px' />
+        </Box>
+        
+
 
           <Box align='center'  paddingBottom='10'>
-            <Text fontSize={'3xl'}>SUGGESTED READING ORDER</Text>
+            <Text fontFamily='OstrichSans' fontSize={'50px'} fontWeight='900' color={'#272727'}>
+              SUGGESTED READING ORDER</Text>
           </Box>
           
           <Box align='center'>
-          <Grid templateColumns='repeat(5, 1fr)' gap={1} width={'70%'}>
+          <Grid templateColumns='repeat(4, 1fr)' gap={1} width={'70%'}>
           {comics.map((link, index) => (
-            <GridItem>
+            <GridItem pr='95px'>
               <Box>
               <Link href={link.url}>
                 <a target="_blank">
-                  <Image src={link.img} width={200} height={300} alt={link.title} />
+                  <Image src={link.img} width={'238px'} height={'352px'} alt={link.title} />
                </a>
                </Link>
                </Box>
-               <Box>
+
+               <Box pt='23px' pb='15px'>
+                 <Text fontFamily='OstrichSans' fontSize={'50px'} fontWeight='900' color={'#272727'}>
                  {index + 1}
+                 </Text>
                </Box>
-               <Box>
+
+               <Box pb='100px'>
                  <Link href={link.url}>
                    <a target="_blank">
-                     <p key={link.id}>{link.title}</p>
+                     <p key={link.id}>
+                     <Text fontFamily='OstrichSans' fontSize={'20px'} fontWeight='900' color={'#272727'}>
+                       {link.title}
+                     </Text>
+                    </p>
                    </a>
                  </Link>
                </Box>
@@ -96,6 +98,24 @@ export default function House_Of_M({comics}) {
           ))}
           </Grid>
           </Box>
+
+          <HStack>
+          <Box align='left' pb='40px' pl='90px'>
+            <Link href="/avenger_dissamble">
+              <a>
+              <Image src={'/pics/avengers-disassemble@3x.png'} width='823px' height='100px'/>
+              </a>
+            </Link>
+          </Box>
+
+          <Box align='left' pb='40px' pl='90px'>
+            <Link href="/civil_war">
+            <a>
+            <Image src={'/pics/civil-war@3x.png'} width='381px' height='100px'/>
+            </a>
+            </Link>
+            </Box>
+          </HStack>
       </div>
     </div>
   )

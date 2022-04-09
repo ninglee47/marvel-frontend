@@ -3,12 +3,7 @@ import Image from 'next/image'
 import Link from 'next/link';
 import { gql } from "@apollo/client";
 import client from "../apollo-client";
-import { Box, Grid, GridItem, Text } from '@chakra-ui/react';
-import {
-  Breadcrumb,
-  BreadcrumbItem,
-  BreadcrumbLink,
-} from '@chakra-ui/react'
+import { Box, Grid, GridItem, Text, HStack } from '@chakra-ui/react';
 
 const Feed_query = gql`{
   feed {
@@ -45,55 +40,61 @@ export default function Avenger_Dissamble({comics}) {
         <title>Avenger Disassembled Reading Order</title>
       </Head>
       <div>
-          <Breadcrumb separator='-'>
-            <BreadcrumbItem>
-              <BreadcrumbLink href='/'>
-                <Text fontSize='3xl' align={'center'}>Home</Text>
-              </BreadcrumbLink>
-            </BreadcrumbItem>
-          
-            <BreadcrumbItem>
-              <BreadcrumbLink href='/about'>
-                <Text fontSize='3xl' align={'center'}>About</Text>
-              </BreadcrumbLink>
-            </BreadcrumbItem>
-          </Breadcrumb>
+        <Box  pos="absolute" top="0" left="0">
+          <Image src={'/pics/avengers_dissasembled.jpeg'} width='144' height='290' />
+        </Box>
+        
+        <Box mt='85px' ml='85px'>
+          <Link href='/'>
+            <a>
+            <Image src={'/pics/home@3x.png'} width='209px' height='100px'/>
+            </a>
+          </Link>
+        </Box>
 
-          <Text fontSize='4xl' align={'center'}>Avenger Disassembled</Text>
-          <Box align='center'>
-            <Image src='/pics/avengers-disassembled.jpeg' width={1024*0.8} height={790*0.8} alt={'avengers_dissasembled'} />
-          </Box>
-
-          <Box width={'85%'} paddingBottom='10' paddingTop={'5'} paddingLeft='80'>
-            <Text fontSize={'2xl'}>
-            Writer Brian Michael Bendis kicks off his historic run with the Avengers by bringing the previous era to a close alongside artist David Finch! 
-            Chaos reigns when of Earth’s Mightiest Heroes turns against their teammates, leading the Avengers into a battle that not all will survive! 
-            Featuring Iron Man, Captain America, Hawkeye, the Scarlet Witch and more!
+        <Box pl='95px'>
+            <Text textShadow={'-12px 0px black'} color='#d25050' fontFamily={'OstrichSans'} fontSize='180px' fontWeight={'900'}>
+              AVENGERS
             </Text>
-          </Box>
+            <Text textShadow={'-12px 0px black'} color='#d25050' fontFamily={'OstrichSans'} fontSize='180px' fontWeight={'900'}>
+             DISASSEMBLED
+            </Text>
+        </Box>
+        
+        
+
 
           <Box align='center'  paddingBottom='10'>
-            <Text fontSize={'3xl'}>SUGGESTED READING ORDER</Text>
+            <Text fontFamily='OstrichSans' fontSize={'50px'} fontWeight='900' color={'#272727'}>
+              SUGGESTED READING ORDER</Text>
           </Box>
           
           <Box align='center'>
-          <Grid templateColumns='repeat(5, 1fr)' gap={1} width={'70%'}>
+          <Grid templateColumns='repeat(4, 1fr)' gap={1} width={'70%'}>
           {comics.map((link, index) => (
-            <GridItem>
+            <GridItem pr='95px'>
               <Box>
               <Link href={link.url}>
                 <a target="_blank">
-                  <Image src={link.img} width={200} height={300} alt={link.title} />
+                  <Image src={link.img} width={'238px'} height={'352px'} alt={link.title} />
                </a>
                </Link>
                </Box>
-               <Box>
+
+               <Box pt='23px' pb='15px'>
+                 <Text fontFamily='OstrichSans' fontSize={'50px'} fontWeight='900' color={'#272727'}>
                  {index + 1}
+                 </Text>
                </Box>
-               <Box>
+
+               <Box pb='100px'>
                  <Link href={link.url}>
                    <a target="_blank">
-                     <p key={link.id}>{link.title}</p>
+                     <p key={link.id}>
+                     <Text fontFamily='OstrichSans' fontSize={'20px'} fontWeight='900' color={'#272727'}>
+                       {link.title}
+                     </Text>
+                    </p>
                    </a>
                  </Link>
                </Box>
@@ -102,6 +103,24 @@ export default function Avenger_Dissamble({comics}) {
           ))}
           </Grid>
           </Box>
+
+          <HStack>
+          <Box align='left' pb='40px' pl='100px'>
+            <Link href="/house_of_m">
+              <a>
+              <Image src={'/pics/house-of-m@3x.png'} width='338px' height='100px'/>
+            </a>
+            </Link>
+          </Box>
+          
+          <Box align='left' pb='40px' pl='90px'>
+            <Link href="/civil_war">
+            <a>
+            <Image src={'/pics/civil-war@3x.png'} width='381px' height='100px'/>
+            </a>
+            </Link>
+            </Box>
+          </HStack>
 
       </div>
     </div>

@@ -3,13 +3,7 @@ import Image from 'next/image'
 import Link from 'next/link';
 import { gql } from "@apollo/client";
 import client from "../apollo-client";
-import { Box, Grid, GridItem, Text } from '@chakra-ui/react';
-import {
-  Breadcrumb,
-  BreadcrumbItem,
-  BreadcrumbLink,
-} from '@chakra-ui/react'
-
+import { Box, Grid, GridItem, Text, HStack } from '@chakra-ui/react';
 
 export async function getStaticProps() {
   const { data } = await client.query({
@@ -39,55 +33,57 @@ export default function Civil_War({comics}) {
         <title>Civil War Reading Order</title>
       </Head>
       <div>
-          <Breadcrumb separator='-'>
-            <BreadcrumbItem>
-              <BreadcrumbLink href='/'>
-                <Text fontSize='3xl' align={'center'}>Home</Text>
-              </BreadcrumbLink>
-            </BreadcrumbItem>
-          
-            <BreadcrumbItem>
-              <BreadcrumbLink href='/about'>
-                <Text fontSize='3xl' align={'center'}>About</Text>
-              </BreadcrumbLink>
-            </BreadcrumbItem>
-          </Breadcrumb>
+        <Box mt='85px' ml='85px'>
+          <Link href='/'>
+            <a>
+            <Image src={'/pics/home@3x.png'} width='209px' height='100px'/>
+            </a>
+          </Link>
+        </Box>
 
-          <Text fontSize='4xl' align={'center'}>Civil War</Text>
-
-          <Box align='center'>
-            <Image src='/pics/civil_war.png' width={1200*0.8} height={800*0.8} alt={'civil war'} />
-          </Box>
-
-          <Box width={'85%'} paddingBottom='10' paddingTop={'5'} paddingLeft='80'>
-            <Text fontSize={'2xl'}>
-            After a horrific tragedy raises questions on whether or not super heroes should register with the government, longtime Avengers teammates Captain America and Iron Man end up on opposite sides of the argument! 
-            Writer Mark Millar and artist Steve McNiven split the Marvel Universe in two as friend fights friend in one of the most celebrated and successful events of all-time!
+        <Box pl='95px'>
+            <Text textShadow={'-12px 0px black'} color='#d25050' fontFamily={'OstrichSans'} fontSize='180px' fontWeight={'900'}>
+              CIVIL WAR
             </Text>
-          </Box>
+        </Box>
+        
+        <Box width='100%' pb='76px'>
+          <Image src={'/pics/51-f-7-c-51-eeab-8-ea-727-f-00000-e@3x.png'} layout="responsive" width='1139px' height='438px' />
+        </Box>
+        
+
 
           <Box align='center'  paddingBottom='10'>
-            <Text fontSize={'3xl'}>SUGGESTED READING ORDER</Text>
+            <Text fontFamily='OstrichSans' fontSize={'50px'} fontWeight='900' color={'#272727'}>
+              SUGGESTED READING ORDER</Text>
           </Box>
           
           <Box align='center'>
-          <Grid templateColumns='repeat(5, 1fr)' gap={1} width={'70%'}>
+          <Grid templateColumns='repeat(4, 1fr)' gap={1} width={'70%'}>
           {comics.map((link, index) => (
-            <GridItem>
+            <GridItem pr='95px'>
               <Box>
               <Link href={link.url}>
                 <a target="_blank">
-                  <Image src={link.img} width={200} height={300} alt={link.title} />
+                  <Image src={link.img} width={'238px'} height={'352px'} alt={link.title} />
                </a>
                </Link>
                </Box>
-               <Box>
+
+               <Box pt='23px' pb='15px'>
+                 <Text fontFamily='OstrichSans' fontSize={'50px'} fontWeight='900' color={'#272727'}>
                  {index + 1}
+                 </Text>
                </Box>
-               <Box>
+
+               <Box pb='100px'>
                  <Link href={link.url}>
                    <a target="_blank">
-                     <p key={link.id}>{link.title}</p>
+                     <p key={link.id}>
+                     <Text fontFamily='OstrichSans' fontSize={'20px'} fontWeight='900' color={'#272727'}>
+                       {link.title}
+                     </Text>
+                    </p>
                    </a>
                  </Link>
                </Box>
@@ -96,6 +92,24 @@ export default function Civil_War({comics}) {
           ))}
           </Grid>
           </Box>
+
+          <HStack>
+          <Box align='left' pb='40px' pl='90px'>
+            <Link href="/avenger_dissamble">
+              <a>
+              <Image src={'/pics/avengers-disassemble@3x.png'} width='823px' height='100px'/>
+              </a>
+            </Link>
+          </Box>
+
+          <Box align='left' pb='40px' pl='100px'>
+            <Link href="/house_of_m">
+              <a>
+              <Image src={'/pics/house-of-m@3x.png'} width='338px' height='100px'/>
+            </a>
+            </Link>
+          </Box>
+          </HStack>
       </div>
     </div>
   )
