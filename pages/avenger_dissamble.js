@@ -4,7 +4,9 @@ import Link from 'next/link';
 import { gql } from "@apollo/client";
 import client from "../apollo-client";
 import { Box, Grid, GridItem, Text, HStack } from '@chakra-ui/react';
-import '@easyfonts/ostrich-sans/black.css';
+import "fontsource-ostrich-sans/900.css"
+
+
 
 const Feed_query = gql`{
   feed {

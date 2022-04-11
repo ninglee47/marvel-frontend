@@ -3,10 +3,25 @@ import Image from 'next/image'
 import Link from 'next/link';
 import styles from '../styles/Home.module.css'
 import { Text, Box, Stack } from '@chakra-ui/react';
+import { useState } from 'react';
 //import '@easyfonts/ostrich-sans/regular.css';
 import "fontsource-ostrich-sans/900.css"
 
+import { useSpring, animated } from 'react-spring'
+
+
 export default function Home() {
+
+  const AnimatedDonut = animated(Box)
+  const [flip, setFlip] = useState(false)
+
+  const props = useSpring({ 
+    from: {scale: 1.2},
+    to: {scale: 1},
+    reverse: flip,
+    delay: 300,
+  })
+
   return (
     <div className={styles.container}>
       <Head>
@@ -32,7 +47,9 @@ export default function Home() {
               MARVEL EARTH 616
             </Text>
           </Box>
-          <Box align='right' pb='40px' pr='90px'>
+          
+          <Box pb='40px' pl='50%' pr='90px'>
+            <AnimatedDonut style={props} onMouseEnter={() => setFlip(true)} onMouseLeave={() => setFlip(false)}>
             <Link href="/avenger_dissamble">
               <a>
               
@@ -40,22 +57,28 @@ export default function Home() {
               
               </a>
             </Link>
+            </AnimatedDonut>
           </Box>
+          
 
-          <Box align='right' pb='40px' pr='90px'>
+          <Box pb='40px' pl='80%' pr='90px'>
+          <AnimatedDonut style={props} onMouseEnter={() => setFlip(true)} onMouseLeave={() => setFlip(false)}>
             <Link href="/house_of_m">
               <a>
               <Image src={'/pics/house-of-m@3x.png'} width='338px' height='100px'/>
             </a>
             </Link>
+            </AnimatedDonut>
           </Box>
           
-          <Box align='right' pb='40px' pr='90px'>
+          <Box pb='40px' pl='80%' pr='90px'>
+          <AnimatedDonut style={props} onMouseEnter={() => setFlip(true)} onMouseLeave={() => setFlip(false)}>
             <Link href="/civil_war">
             <a>
             <Image src={'/pics/civil-war@3x.png'} width='381px' height='100px'/>
             </a>
             </Link>
+            </AnimatedDonut>
             </Box>
           </Stack>
         
