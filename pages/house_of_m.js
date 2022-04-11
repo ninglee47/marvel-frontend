@@ -4,12 +4,7 @@ import Link from 'next/link';
 import { gql } from "@apollo/client";
 import client from "../apollo-client";
 import { Box, Grid, GridItem, Text, HStack } from '@chakra-ui/react';
-import {
-  Breadcrumb,
-  BreadcrumbItem,
-  BreadcrumbLink,
-} from '@chakra-ui/react'
-
+import '@easyfonts/ostrich-sans/black.css';
 
 export async function getStaticProps() {
   const { data } = await client.query({
@@ -48,7 +43,7 @@ export default function House_Of_M({comics}) {
         </Box>
 
         <Box pl='95px'>
-            <Text textShadow={'-12px 0px black'} color='#d25050' fontFamily={'OstrichSans'} fontSize='180px' fontWeight={'900'}>
+            <Text textShadow={'-12px 0px black'} color='#d25050' fontFamily={'Ostrich Sans'} fontSize='200px' fontWeight={'900'}>
               HOUSE OF M
             </Text>
         </Box>

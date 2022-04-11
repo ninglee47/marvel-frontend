@@ -2,16 +2,9 @@ import Head from 'next/head'
 import Image from 'next/image'
 import Link from 'next/link';
 import styles from '../styles/Home.module.css'
-import { Text, Box, Stack, extendTheme } from '@chakra-ui/react';
-
-const theme = extendTheme({
-  textStyles: {
-    h1: {
-      textShadow: '-1px 1px 2px #000, 1px 1px 2px #000, 1px -1px 0 #000, -1px -1px 0 #000,'
-    }
-  }
-})
-
+import { Text, Box, Stack } from '@chakra-ui/react';
+//import '@easyfonts/ostrich-sans/regular.css';
+import "fontsource-ostrich-sans/900.css"
 
 export default function Home() {
   return (
@@ -24,7 +17,7 @@ export default function Home() {
       <div>
       
          
-          <Box mt='85px' mr='85px'>
+          <Box mt='85px' ml='85px'>
             <Link href='/about'>
               <a>
               <Image src={'/pics/about@3x.png'} width='209px' height='100px'/>
@@ -34,15 +27,17 @@ export default function Home() {
           
 
           <Stack>
-          <Box>
-            <Text textShadow={'-12px 0px black'} color='#d25050' fontFamily={'OstrichSans'} fontSize='180px' fontWeight={'900'}>
+          <Box pl='95px'>
+            <Text textShadow={'-12px 0px black'} color='#d25050' fontFamily={'Ostrich Sans'} fontSize='250px' fontWeight={'900'}>
               MARVEL EARTH 616
             </Text>
           </Box>
           <Box align='right' pb='40px' pr='90px'>
             <Link href="/avenger_dissamble">
               <a>
+              
               <Image src={'/pics/avengers-disassemble@3x.png'} width='823px' height='100px'/>
+              
               </a>
             </Link>
           </Box>
