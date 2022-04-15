@@ -59,7 +59,7 @@ export default function Home() {
 
           <Stack alignItems={'end'}>
             {springs.map( (scale, i) => (
-              <Box pb='40px' pl='60%' pr='90px'>
+              <Box pb='40px' pr='90px'>
                 <AnimatedDonut 
                 key={i}
                 onMouseEnter={() => {
