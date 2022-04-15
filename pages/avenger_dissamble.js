@@ -6,8 +6,6 @@ import client from "../apollo-client";
 import { Box, Grid, GridItem, Text, HStack } from '@chakra-ui/react';
 import "fontsource-ostrich-sans/900.css"
 
-
-
 const Feed_query = gql`{
   feed {
     id

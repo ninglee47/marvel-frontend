@@ -7,20 +7,29 @@ import { useState } from 'react';
 //import '@easyfonts/ostrich-sans/regular.css';
 import "fontsource-ostrich-sans/900.css"
 
-import { useSpring, animated } from 'react-spring'
+import { useSprings, animated } from 'react-spring'
 
 
 export default function Home() {
 
   const AnimatedDonut = animated(Box)
   const [flip, setFlip] = useState(false)
+  const [index, setIndex] = useState(null);
 
-  const props = useSpring({ 
-    from: {scale: 1.2},
-    to: {scale: 1},
-    reverse: flip,
-    delay: 300,
-  })
+  const test = [1, 2 ,3]
+  const imgs = [
+  {pic:'/pics/avengers-disassemble@3x.png', href: '/avenger_dissamble', width: '823px'}, 
+  {pic: '/pics/house-of-m@3x.png', href:'/house_of_m', width: '338px'}, 
+  {pic:'/pics/civil-war@3x.png', href:'/civil_war', width: '381px'}]
+
+  const springs = useSprings(
+    imgs.length,
+    imgs.map((item, i) => ({
+      from: {scale: 1},
+      scale: i === index ? 1.2 : 1,
+      delay: 300
+    }))
+  );
 
   return (
     <div className={styles.container}>
@@ -47,39 +56,32 @@ export default function Home() {
               MARVEL EARTH 616
             </Text>
           </Box>
-          
-          <Box pb='40px' pl='50%' pr='90px'>
-            <AnimatedDonut style={props} onMouseEnter={() => setFlip(true)} onMouseLeave={() => setFlip(false)}>
-            <Link href="/avenger_dissamble">
-              <a>
-              
-              <Image src={'/pics/avengers-disassemble@3x.png'} width='823px' height='100px'/>
-              
-              </a>
-            </Link>
-            </AnimatedDonut>
-          </Box>
-          
 
-          <Box pb='40px' pl='80%' pr='90px'>
-          <AnimatedDonut style={props} onMouseEnter={() => setFlip(true)} onMouseLeave={() => setFlip(false)}>
-            <Link href="/house_of_m">
-              <a>
-              <Image src={'/pics/house-of-m@3x.png'} width='338px' height='100px'/>
-            </a>
-            </Link>
-            </AnimatedDonut>
-          </Box>
+          <Stack alignItems={'end'}>
+            {springs.map( (scale, i) => (
+              <Box pb='40px' pl='60%' pr='90px'>
+                <AnimatedDonut 
+                key={i}
+                onMouseEnter={() => {
+                  setFlip(true)
+                  setIndex(i)}}
+                onMouseLeave={() => {setFlip(false)
+                 setIndex(null)}}
+                 style = {scale}>
+                  
+                   <Link href={imgs[i].href}>
+                   <a>
+                     <Image src={imgs[i].pic} width={imgs[i].width} height='100px'/>
+                   </a>
+                   </Link>
+                   
+                </AnimatedDonut>
+                </Box>
+              )
+            )}
+          </Stack>
           
-          <Box pb='40px' pl='80%' pr='90px'>
-          <AnimatedDonut style={props} onMouseEnter={() => setFlip(true)} onMouseLeave={() => setFlip(false)}>
-            <Link href="/civil_war">
-            <a>
-            <Image src={'/pics/civil-war@3x.png'} width='381px' height='100px'/>
-            </a>
-            </Link>
-            </AnimatedDonut>
-            </Box>
+          
           </Stack>
         
       </div>      
