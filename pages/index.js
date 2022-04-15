@@ -50,7 +50,7 @@ export default function Home() {
           </Box>
           
 
-          <Stack>
+          <Stack pb='45px'>
           <Box pl='95px'>
             <Text textShadow={'-12px 0px black'} color='#d25050' fontFamily={'Ostrich Sans'} fontSize='250px' fontWeight={'900'}>
               MARVEL EARTH 616
