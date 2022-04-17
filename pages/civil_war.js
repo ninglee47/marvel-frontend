@@ -65,7 +65,7 @@ export default function Civil_War({comics}) {
           <Box align='center'>
           <Grid templateColumns='repeat(4, 1fr)' gap={1} width={'70%'}>
           {comics.map((link, index) => (
-            <GridItem pr='95px'>
+            <GridItem>
               <Box>
               <Link href={link.url}>
                 <a target="_blank">
