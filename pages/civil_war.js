@@ -34,7 +34,7 @@ export default function Civil_War({comics}) {
   return (
     <div>
       <Head>
-        <title>Civil War Reading Order</title>
+        <title>Civil War</title>
       </Head>
       <div>
         <Box mt='85px' ml='85px'>

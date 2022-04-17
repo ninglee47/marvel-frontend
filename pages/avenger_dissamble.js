@@ -49,7 +49,7 @@ export default function Avenger_Dissamble({comics}) {
   return (
     <div>
       <Head>
-        <title>Avenger Disassembled Reading Order</title>
+        <title>Avenger Disassembled</title>
       </Head>
       <div>
         <Box 

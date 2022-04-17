@@ -31,7 +31,7 @@ export default function House_Of_M({comics}) {
   return (
     <div>
       <Head>
-        <title>House of M Reading Order</title>
+        <title>House of M</title>
       </Head>
       <div>
         <Box mt='85px' ml='85px'>
