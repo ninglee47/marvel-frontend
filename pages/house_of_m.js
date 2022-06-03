@@ -1,9 +1,8 @@
 import Head from 'next/head'
-import Image from 'next/image'
 import Link from 'next/link';
 import { gql } from "@apollo/client";
 import client from "../apollo-client";
-import { Box, Grid, GridItem, Text, HStack } from '@chakra-ui/react';
+import { Box, Grid, GridItem, Text, HStack, Image } from '@chakra-ui/react';
 import "fontsource-ostrich-sans/900.css"
 
 export async function getStaticProps() {
@@ -34,7 +33,7 @@ export default function House_Of_M({comics}) {
         <title>House of M</title>
       </Head>
       <div>
-        <Box mt='85px' ml='85px'>
+        <Box mt='85px' pl={{base:'20px', md:'85px'}} pb='10px'>
           <Link href='/'>
             <a>
             <Image src={'/pics/home@3x.png'} width='209px' height='100px'/>
@@ -42,27 +41,29 @@ export default function House_Of_M({comics}) {
           </Link>
         </Box>
 
-        <Box pl='95px'>
-            <Text textShadow={'-12px 0px black'} color='#d25050' fontFamily={'Ostrich Sans'} fontSize='200px' fontWeight={'900'}>
+        <Box pl={{base:'20px', md:'95px'}}>
+            <Text textShadow={{base:'-2px 0px black', md:'-12px 0px black', lg:'-12px 0px black'}} 
+              color='#d25050' 
+              fontFamily={'Ostrich Sans'} 
+              fontSize={{ base: '60px', md: '200px', lg: '200px' }}
+              fontWeight={'900'}>
               HOUSE OF M
             </Text>
         </Box>
         
         <Box width='100%' pb='76px'>
-          <Image src={'/pics/137439@3x.png'} layout="responsive" width='1139px' height='438px' />
+          <Image src={'/pics/137439@3x.png'} layout="responsive" />
         </Box>
         
-
-
           <Box align='center'  paddingBottom='10'>
-            <Text fontFamily='OstrichSans' fontSize={'50px'} fontWeight='900' color={'#272727'}>
+            <Text fontFamily='OstrichSans' fontSize={{base:'20px', md:'50px'}} fontWeight='900' color={'#272727'}>
               SUGGESTED READING ORDER</Text>
           </Box>
           
           <Box align='center'>
           <Grid templateColumns='repeat(4, 1fr)' gap={1} width={'70%'}>
           {comics.map((link, index) => (
-            <GridItem>
+            <GridItem colSpan={{base:4, md:1}}>
               <Box>
               <Link href={link.url}>
                 <a target="_blank">
@@ -94,7 +95,7 @@ export default function House_Of_M({comics}) {
           </Grid>
           </Box>
 
-          <HStack>
+          {/* <HStack>
           <Box align='left' pb='40px' pl='90px'>
             <Link href="/avenger_dissamble">
               <a>
@@ -110,7 +111,7 @@ export default function House_Of_M({comics}) {
             </a>
             </Link>
             </Box>
-          </HStack>
+          </HStack> */}
       </div>
     </div>
   )

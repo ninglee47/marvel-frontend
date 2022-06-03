@@ -1,8 +1,7 @@
 import Head from 'next/head'
-import Image from 'next/image'
 import Link from 'next/link';
 import styles from '../styles/Home.module.css'
-import { Text, Box, Stack } from '@chakra-ui/react';
+import { Text, Box, Stack, Image } from '@chakra-ui/react';
 import { useState } from 'react';
 //import '@easyfonts/ostrich-sans/regular.css';
 import "fontsource-ostrich-sans/900.css"
@@ -18,9 +17,9 @@ export default function Home() {
 
   const test = [1, 2 ,3]
   const imgs = [
-  {pic:'/pics/avengers-disassemble@3x.png', href: '/avenger_dissamble', width: '823px'}, 
-  {pic: '/pics/house-of-m@3x.png', href:'/house_of_m', width: '338px'}, 
-  {pic:'/pics/civil-war@3x.png', href:'/civil_war', width: '381px'}]
+  {pic:'/pics/avengers-disassemble@3x.png', href: '/avenger_dissamble', width: 823}, 
+  {pic: '/pics/house-of-m@3x.png', href:'/house_of_m', width: 338}, 
+  {pic:'/pics/civil-war@3x.png', href:'/civil_war', width: 381}]
 
   const springs = useSprings(
     imgs.length,
@@ -41,18 +40,25 @@ export default function Home() {
       <div>
       
          
-          <Box mt='85px' ml='85px'>
+          <Box mt={{base:'40px', md:'85px'}} ml={{base:'10px', md:'85px'}} pb='10px'>
             <Link href='/about'>
               <a>
-              <Image src={'/pics/about@3x.png'} width='209px' height='100px'/>
+              <Image src={'/pics/about@3x.png'} 
+              width={{base:'150px', md:'209px'}} 
+              height={{base:'41px', md:'100px'}}/>
               </a>
             </Link>
           </Box>
           
 
           <Stack pb='45px'>
-          <Box pl='95px'>
-            <Text textShadow={'-12px 0px black'} color='#d25050' fontFamily={'Ostrich Sans'} fontSize='250px' fontWeight={'900'}>
+          <Box pl={{base: '10px', md:'95px'}}>
+            <Text 
+            textShadow={{base:'-2px 0px black', md:'-12px 0px black', lg:'-12px 0px black'}} 
+            color='#d25050' 
+            fontFamily={'Ostrich Sans'} 
+            fontSize={{ base: '80px', md: '250px', lg: '250px' }}
+            fontWeight={'900'}>
               MARVEL EARTH 616
             </Text>
           </Box>
@@ -71,7 +77,7 @@ export default function Home() {
                   
                    <Link href={imgs[i].href}>
                    <a>
-                     <Image src={imgs[i].pic} width={imgs[i].width} height='100px'/>
+                     <Image src={imgs[i].pic} width={{base: imgs[i].width - 50, md:imgs[i].width}} height={{base:'51px', md:'100px'}}/>
                    </a>
                    </Link>
                    
