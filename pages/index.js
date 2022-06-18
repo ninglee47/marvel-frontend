@@ -77,7 +77,7 @@ export default function Home() {
                   
                    <Link href={imgs[i].href}>
                    <a>
-                     <Image src={imgs[i].pic} width={{base: imgs[i].width - 50, md:imgs[i].width}} height={{base:'51px', md:'100px'}}/>
+                     <Image alt={imgs[i].pic} src={imgs[i].pic} width={{base: imgs[i].width - 50, md:imgs[i].width}} height={{base:'51px', md:'100px'}}/>
                    </a>
                    </Link>
                    
